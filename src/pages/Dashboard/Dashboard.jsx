@@ -243,12 +243,25 @@ function Dashboard() {
                       <td>{health.sector}</td>
                       <td>{health.district}</td>
                       <td>
-  {new Date(health.createdAt).getFullYear()}/
-  {(new Date(health.createdAt).getMonth() + 1).toString().padStart(2, '0')}/
-  {new Date(health.createdAt).getDate().toString().padStart(2, '0')} 
-  {new Date(health.createdAt).getHours().toString().padStart(2, '0')}:
-  {new Date(health.createdAt).getMinutes().toString().padStart(2, '0')}
-</td>
+                        {new Date(health.createdAt).getFullYear()}/
+                        {(new Date(health.createdAt).getMonth() + 1)
+                          .toString()
+                          .padStart(2, "0")}
+                        /
+                        {new Date(health.createdAt)
+                          .getDate()
+                          .toString()
+                          .padStart(2, "0")}
+                        {new Date(health.createdAt)
+                          .getHours()
+                          .toString()
+                          .padStart(2, "0")}
+                        :
+                        {new Date(health.createdAt)
+                          .getMinutes()
+                          .toString()
+                          .padStart(2, "0")}
+                      </td>
 
                       <td>
                         <div className="actions d-flex align-items-center">
