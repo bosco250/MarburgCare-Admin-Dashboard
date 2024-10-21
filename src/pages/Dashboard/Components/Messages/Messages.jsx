@@ -20,7 +20,7 @@ function Messages() {
           Authorization: `Bearer ${token}`, // Add token to Authorization header
         },
       });
-      setData(response.data.data); // Set the state with the response data
+      setData(response.data.data.reverse()); // Set the state with the response data
       console.log(response.data, "emmykeen");
     } catch (err) {
       console.error("Error fetching data:", err);

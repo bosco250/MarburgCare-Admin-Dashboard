@@ -19,15 +19,17 @@ function Dashboard() {
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 10;
   const [data1, setData] = useState([]);
+  const [dataN, setDataN] = useState([]);
   const [anchorEl, setAnchorEl] = useState(null);
   const [formData, setFormData] = useState({ status: "received" });
   const [confirmDeleteId, setConfirmDeleteId] = useState(null);
   const [confirmUpdateId, setConfirmUpdateId] = useState(null);
 
+ 
   const totalPages = Math.ceil(data1.length / itemsPerPage);
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-  const currentItems = data1.slice(indexOfFirstItem, indexOfLastItem);
+  const currentItems = data1.slice().reverse().slice(indexOfFirstItem, indexOfLastItem);
 
   const getData = async () => {
     const token = localStorage.getItem("token");
@@ -66,9 +68,6 @@ function Dashboard() {
     }
   };
 
-  const [dataN, setDataN] = useState([]);
-  const [loading, setLoading] = useState(true); // Loading state
-  const [error, setError] = useState(null); // Error state
 
   const getDataN = async () => {
     const token = localStorage.getItem("token");
