@@ -25,11 +25,13 @@ function Dashboard() {
   const [confirmDeleteId, setConfirmDeleteId] = useState(null);
   const [confirmUpdateId, setConfirmUpdateId] = useState(null);
 
- 
   const totalPages = Math.ceil(data1.length / itemsPerPage);
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-  const currentItems = data1.slice().reverse().slice(indexOfFirstItem, indexOfLastItem);
+  const currentItems = data1
+    .slice()
+    .reverse()
+    .slice(indexOfFirstItem, indexOfLastItem);
 
   const getData = async () => {
     const token = localStorage.getItem("token");
@@ -68,15 +70,12 @@ function Dashboard() {
     }
   };
 
-
   const getDataN = async () => {
     const token = localStorage.getItem("token");
     const backend = import.meta.env.VITE_BACKEND_URL;
-    
+
     try {
-      const response = await axios.get(`${backend}/updates/getupdate`, {
-      
-      });
+      const response = await axios.get(`${backend}/updates/getupdate`, {});
       setDataN(response.data);
       console.log(response.data, "Fetched updates");
     } catch (err) {
@@ -243,7 +242,14 @@ function Dashboard() {
                       <td>{health.phoneNumber}</td>
                       <td>{health.sector}</td>
                       <td>{health.district}</td>
-                      <td>{health.createdAt}</td>
+                      <td>
+  {new Date(health.createdAt).getFullYear()}/
+  {(new Date(health.createdAt).getMonth() + 1).toString().padStart(2, '0')}/
+  {new Date(health.createdAt).getDate().toString().padStart(2, '0')} 
+  {new Date(health.createdAt).getHours().toString().padStart(2, '0')}:
+  {new Date(health.createdAt).getMinutes().toString().padStart(2, '0')}
+</td>
+
                       <td>
                         <div className="actions d-flex align-items-center">
                           <Button className="error" color="error">
