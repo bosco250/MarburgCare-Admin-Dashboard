@@ -1,0 +1,12 @@
+@import url('https://fonts.googleapis.com/css2?family=Heebo:wght@100..900&display=swap');
+
+
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+*{
+  font-family: "Heebo", sans-serif;
+}
+/* Add this to your CSS file to ensure toasts are visible */
